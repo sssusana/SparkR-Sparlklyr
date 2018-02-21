@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(SparkR)\ninstall.packages(\"sparklyr\")\nlibrary(dplyr)\ninstall.packages(c(\"nycflights13\"))\nlibrary(nycflights13)\ndevtools::install_github(\"rstudio/sparklyr\")\n\nflights_tbl <- copy_to(sc, nycflights13::flights, \"flights\")\n\n## SPEC THE INITIAL STUFF\nif (nchar(Sys.getenv(\"SPARK_HOME\")) < 1) {\n  Sys.setenv(SPARK_HOME = \"/Users/Susana/Documents/spark-1.6.0-bin-hadoop2.6\")\n}\nSys.getenv(\"SPARK_HOME\")\n\n## Initialize SparkContext\nlib.loc <- c(file.path(Sys.getenv(\"SPARK_HOME\"), \"R\", \"lib\"))\nlib.loc\nsc <- sparkR.init(master = \"local[*]\", sparkEnvir = list(spark.driver.memory=\"2g\"))\n\nimport_iris <- copy_to(sc, iris, \"spark_iris\", overwrite = TRUE)\n",
+    "created" : 1518647794914.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2701292766",
+    "id" : "30834499",
+    "lastKnownWriteTime" : 1518652943,
+    "last_content_update" : 1518652943587,
+    "path" : "~/Documents/GitHub/sparkR/sparkR/spark2.R",
+    "project_path" : "spark2.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
